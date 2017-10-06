@@ -62,90 +62,90 @@ Supplement modules
 module.exports = {
 // Base Style & HTML
   get BaseStyle() {
-    return require('./basestyle').default
+    return require('./src/basestyle').default
   },
   get Text() {
-    return require('./text').default
+    return require('./src/text').default
   },
 // Device and Screen Layout
   get Device() {
-    return require('./device').default
+    return require('./src/device').default
   },
   get Screen() {
-    return require('./screen').default
+    return require('./src/screen').default
   },
   get Block() {
-    return require('./block').default
+    return require('./src/block').default
   },
   get Content() {
-    return require('./block').default
+    return require('./src/block').default
   },
   get Bar() {
-    return require('./bar').default
+    return require('./src/bar').default
   },
   get DataBar() {
-    return require('./databar').default
+    return require('./src/databar').default
   },
   get DataBlock() {
-    return require('./datablock').default
+    return require('./src/datablock').default
   },
 // Icon
   get Icon() {
-    return require('./icon').default
+    return require('./src/icon').default
   },
   get IconList() {
-    return require('./iconlist').default
+    return require('./src/iconlist').default
   },
 // Button family
   get Button() {
-    return require('./button').default
+    return require('./src/button').default
   },
   get ButtonList() {
-    return require('./buttonlist').default
+    return require('./src/buttonlist').default
   },
   get ButtonPanel() {
-    return require('./buttonpanel').default
+    return require('./src/buttonpanel').default
   },
   get Roll() {
-    return require('./roll').default
+    return require('./src/roll').default
   },
   get RollButton() {
-    return require('./roll').default
+    return require('./src/roll').default
   },
   get CheckBox() {
-    return require('./checkbox').default
+    return require('./src/checkbox').default
   },
   get RadioBox() {
-    return require('./radiobox').default
+    return require('./src/radiobox').default
   },
 // Input UI element
   get Input() {
-    return require('./input').default
+    return require('./src/input').default
   },
   get NumberInput() {
-    return require('./numberinput').default
+    return require('./src/numberinput').default
   },
   get DateSelect() {
-    return require('./dateselect').default
+    return require('./src/dateselect').default
   },
   get ItemSelect() {
-    return require('./itemselect').default
+    return require('./src/itemselect').default
   },
   get ImageSlider() {
-    return require('./imageslider').default
+    return require('./src/imageslider').default
   },
 // Non-visual
   get MOM() {
-    return require('./mom').default
+    return require('./src/mom').default
   },
   get Lang() {
-    return require('./lang').default
+    return require('./src/lang').default
   },
 // Borrowed
   get SideMenu() {
-    return require('./sidemenu').default
+    return require('./src/sidemenu').default
   },
-  get Camera() {
-    return require('react-native-camera').default
-  },
+  // get Camera() {
+  //   return require('react-native-camera').default
+  // },
 }
