@@ -15,7 +15,7 @@
 **/
 
 import React from 'react'
-import { Text } from '../rn-naive'
+import Text from './text'
 
 export default class Lang {
   // Language Database
