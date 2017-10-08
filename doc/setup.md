@@ -31,6 +31,8 @@ Complete the installation of below packages.
       npm install react-native-side-menu
 
 
+The following packages are optional:
+
 + **Camera Component**
 
       npm install react-native-camera
@@ -41,17 +43,15 @@ Complete the installation of below packages.
       <uses-permission android:name="android.permission.CAMERA" />
       <uses-feature android:name="android.hardware.camera" />
 
-The following packages are optional:
-
 + **Install react-navigation**
 
-      npm install react-nagivation
+      npm install react-navigation
 
 + **Install react-native-mail**
 
       npm install react-native-mail
 
-    Manually replace these files in modes_modules/react-native-mail
+    Manually replace these files in node_modules/react-native-mail
 
-      copy RNMail.m to nodes_modules/RNMail
-      copy RNMailModule.jave to android/src/main/java/com/chirag/RNMail
+      copy asset/RNMail.m to node_modules/react-native-mail/RNMail
+      copy asset/RNMailModule.jave to node_modules/react-native-mail/android/src/main/java/com/chirag/RNMail

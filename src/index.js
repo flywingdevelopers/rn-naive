@@ -31,7 +31,7 @@
  * Install Camera Component
  *   npm install react-native-camera
  *   react-native link react-native-camera
- * Edit node_modules/react-native-camera/android/src/build.gradle
+ * Edit node_modules/react-native-camera/android/build.gradle
  android {
    compileSdkVersion 23
    buildToolsVersion "23.0.1"
@@ -43,7 +43,7 @@
      versionName "1.0"
    }
 * ( Compile with react-native SDK version )
-*  Edit AndroidManifest.xml (android/app/src/main/):
+*  Edit AndroidManifest.xml (android/app/main/):
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-feature android:name="android.hardware.camera" />
 
@@ -53,7 +53,7 @@ Supplement modules
 * Install react-native-mail
   npm install react-native-mail
     copy RNMail.m to nodes_modules/RNMail
-    copy RNMailModule.jave to android/src/main/java/com/chirag/RNMail
+    copy RNMailModule.jave to android/main/java/com/chirag/RNMail
 * Install react-navigation
   npm install react-nagivation
 
@@ -62,88 +62,88 @@ Supplement modules
 module.exports = {
 // Base Style & HTML
   get BaseStyle() {
-    return require('./src/basestyle').default
+    return require('./basestyle').default
   },
   get Text() {
-    return require('./src/text').default
+    return require('./text').default
   },
 // Device and Screen Layout
   get Device() {
-    return require('./src/device').default
+    return require('./device').default
   },
   get Screen() {
-    return require('./src/screen').default
+    return require('./screen').default
   },
   get Block() {
-    return require('./src/block').default
+    return require('./block').default
   },
   get Content() {
-    return require('./src/block').default
+    return require('./block').default
   },
   get Bar() {
-    return require('./src/bar').default
+    return require('./bar').default
   },
   get DataBar() {
-    return require('./src/databar').default
+    return require('./databar').default
   },
   get DataBlock() {
-    return require('./src/datablock').default
+    return require('./datablock').default
   },
 // Icon
   get Icon() {
-    return require('./src/icon').default
+    return require('./icon').default
   },
   get IconList() {
-    return require('./src/iconlist').default
+    return require('./iconlist').default
   },
 // Button family
   get Button() {
-    return require('./src/button').default
+    return require('./button').default
   },
   get ButtonList() {
-    return require('./src/buttonlist').default
+    return require('./buttonlist').default
   },
   get ButtonPanel() {
-    return require('./src/buttonpanel').default
+    return require('./buttonpanel').default
   },
   get Roll() {
-    return require('./src/roll').default
+    return require('./roll').default
   },
   get RollButton() {
-    return require('./src/roll').default
+    return require('./roll').default
   },
   get CheckBox() {
-    return require('./src/checkbox').default
+    return require('./checkbox').default
   },
   get RadioBox() {
-    return require('./src/radiobox').default
+    return require('./radiobox').default
   },
 // Input UI element
   get Input() {
-    return require('./src/input').default
+    return require('./input').default
   },
   get NumberInput() {
-    return require('./src/numberinput').default
+    return require('./numberinput').default
   },
   get DateSelect() {
-    return require('./src/dateselect').default
+    return require('./dateselect').default
   },
   get ItemSelect() {
-    return require('./src/itemselect').default
+    return require('./itemselect').default
   },
   get ImageSlider() {
-    return require('./src/imageslider').default
+    return require('./imageslider').default
   },
 // Non-visual
   get MOM() {
-    return require('./src/mom').default
+    return require('./mom').default
   },
   get Lang() {
-    return require('./src/lang').default
+    return require('./lang').default
   },
 // Borrowed
   get SideMenu() {
-    return require('./src/sidemenu').default
+    return require('./sidemenu').default
   },
   // get Camera() {
   //   return require('react-native-camera').default
