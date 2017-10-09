@@ -127,17 +127,31 @@ RCT_EXPORT_METHOD(mail:(NSDictionary *)options
 
       				// Determine the MIME type
       				NSString *mimeType = @"image/png";
-      				if ([type isEqualToString:@"jpg"]) {
-      					mimeType = @"image/jpeg";
-      				} else if ([type isEqualToString:@"doc"]) {
-      					mimeType = @"application/msword";
-      				} else if ([type isEqualToString:@"ppt"]) {
-      					mimeType = @"application/vnd.ms-powerpoint";
-      				} else if ([type isEqualToString:@"html"]) {
-      					mimeType = @"text/html";
-      				} else if ([type isEqualToString:@"pdf"]) {
-      					mimeType = @"application/pdf";
-      				}
+              if ([attachmentType isEqualToString:@"jpg"]) {
+                  mimeType = @"image/jpeg";
+              } else if ([attachmentType isEqualToString:@"png"]) {
+                  mimeType = @"image/png";
+              } else if ([attachmentType isEqualToString:@"doc"]) {
+                  mimeType = @"application/msword";
+              } else if ([attachmentType isEqualToString:@"ppt"]) {
+                  mimeType = @"application/vnd.ms-powerpoint";
+              } else if ([attachmentType isEqualToString:@"html"]) {
+                  mimeType = @"text/html";
+              } else if ([attachmentType isEqualToString:@"csv"]) {
+                  mimeType = @"text/csv";
+              } else if ([attachmentType isEqualToString:@"pdf"]) {
+                  mimeType = @"application/pdf";
+              } else if ([attachmentType isEqualToString:@"vcard"]) {
+                  mimeType = @"text/vcard";
+              } else if ([attachmentType isEqualToString:@"json"]) {
+                  mimeType = @"application/json";
+              } else if ([attachmentType isEqualToString:@"zip"]) {
+                  mimeType = @"application/zip";
+              } else if ([attachmentType isEqualToString:@"text"]) {
+                  mimeType = @"text/*";
+              }
+
+              // Add attachment
       				[mail addAttachmentData:fileData mimeType:mimeType fileName:name];
       			}
         }

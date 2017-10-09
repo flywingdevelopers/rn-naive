@@ -49,9 +49,13 @@ The following packages are optional:
 
 + **Install react-native-mail**
 
+      npm install https://github.com/flywingdevelopers/react-native-mail.git
+
+    If you install from standard package,
+
       npm install react-native-mail
 
-    Manually replace these files in node_modules/react-native-mail
+    then manually replace these files in node_modules/react-native-mail
 
       copy asset/RNMail.m to node_modules/react-native-mail/RNMail
       copy asset/RNMailModule.jave to node_modules/react-native-mail/android/src/main/java/com/chirag/RNMail
