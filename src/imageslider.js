@@ -207,8 +207,12 @@ export default class ImageSlider extends React.PureComponent {
   }
 }
 
+ImageSlider.defaultProps = {
+  images:[],
+}
+
 ImageSlider.propTypes = {
-    images: PropTypes.array.isRequired,
+    images: PropTypes.array,
     bulletPosition: PropTypes.oneOf(['top', 'bottom', 'none']),
     resizeMode: PropTypes.oneOf(['cover', 'contain', 'stretch', 'repeat', 'center']),
     height: PropTypes.number,

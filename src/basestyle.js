@@ -33,7 +33,7 @@ export default BaseStyle = {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
-      backgroundColor: 'blue',
+      backgroundColor: 'lightblue',
     },
     plainView: {
       flexDirection: 'row',

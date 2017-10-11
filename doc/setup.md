@@ -51,7 +51,7 @@ The following packages are optional:
 
       npm install https://github.com/flywingdevelopers/react-native-mail.git
 
-    If you install from standard package,
+    Or, if you install from standard package,
 
       npm install react-native-mail
 
