@@ -19,6 +19,25 @@ import BaseStyle from './basestyle'
 import Input from './input'
 
 export default class NumberInput extends React.Component {
+  iconv=(text)=>{
+    /* convert text to number */
+    try {
+      number = Number(eval(String(text).replace(/,/g,'')).toFixed(this.decimal))
+    } catch(err) {
+      number = 0
+    }
+    console.log('iconv('+text+')=>'+number)
+    return number
+  }
+  oconv=(number)=>{
+    /* convert number to text */
+    let result = (typeof number === 'undefined' || (number == 0 && this.zeroBlank))?
+      ''
+      :
+      this.inf.format(number, this.decimal)
+    console.log('oconv('+number+')=>'+result)
+    return result
+  }
   constructor(props) {
     super(props)
     let {
@@ -30,50 +49,51 @@ export default class NumberInput extends React.Component {
       BaseStyle.NumberInput.decimal
       :
       decimal
-    this.value = (typeof value === 'undefined')?
-      BaseStyle.NumberInput.value
-      :
-      value
     this.inf = new Intl.NumberFormat(locale, {
       maximumFractionDigits: this.decimal,
       minimumFractionDigits: this.decimal
     })
-    this.state = {value:this.value}
-  }
-  textToNumber=(text)=>{
-    try {
-      value = Number(eval(String(text).replace(/,/g,'')).toFixed(this.decimal))
-    } catch(err) {
-      value = 0
+    if (typeof value === 'undefined')
+      value = BaseStyle.NumberInput.value
+    /* avatar is the value to show on screen */
+    this.state = {
+      avatar:this.oconv(value),
+      editing: false,
     }
-    return value
-  }
-  numberToText=(number)=>{
-    return (number == 0 && this.zeroBlank)?
-      ''
-      :
-      this.inf.format(number, this.decimal)
   }
   getNewText=(txt)=>{
-    let text = ''
+    /* call on each onChangeText to validate character input */
+    let avatar = ''
     let numbers = '0123456789.+-*/,'
     for (var i = 0; i <= txt.length; i++) {
       if (numbers.indexOf(txt[i]) > -1) {
-        text = text + txt[i]
+        avatar = avatar + txt[i]
       }
     }
-    console.log('getNewText('+txt+')=>'+text)
-    this.setState({text})
-    return text
+    this.setState({avatar})
+    console.log('getNewText('+txt+')=>'+avatar)
+    return avatar
   }
-  getFinalValue=(txt)=> {
-    let value = this.textToNumber(txt)
-    let text = this.numberToText(value)
-    this.setState({text, value})
+  getFinalValue=(avatar)=> {
+    /* call by EndEditing to obtain final value */
+    let value = this.iconv(avatar)
+    this.setState({avatar:String(value)})
+    console.log('getFinalValue('+avatar+')=>'+value)
     return value
   }
-  displayValue=(value)=>{
-    return this.numberToText(this.textToNumber(value))
+  uponFocus=()=>{
+    console.log('uponFocus()')
+    this.setState({
+      avatar:this.iconv(this.oconv(this.props.value)),
+      editing:true,
+    })
+  }
+  uponBlur=()=>{
+    console.log('uponBlur()')
+    this.setState({
+      avatar:this.oconv(this.state.avatar),
+      editing:false,
+    })
   }
   render() {
     let {
@@ -82,7 +102,8 @@ export default class NumberInput extends React.Component {
     // Theme and Style
       theme, style, textStyle,
     // number specification
-      locale, decimal, value,
+      value,
+      locale, decimal,
       zeroBlank, blankZero,
     // action
       disabled,
@@ -103,6 +124,10 @@ export default class NumberInput extends React.Component {
       textStyle,
       style,
     ]
+    avatar = (this.state.editing)?
+      this.state.avatar
+      :
+      this.oconv(value)
     return(
       <Input
         theme={theme}
@@ -112,7 +137,9 @@ export default class NumberInput extends React.Component {
         selectTextOnFocus={true}
         getNewText={this.getNewText}
         getFinalValue={this.getFinalValue}
-        displayValue={this.displayValue}
+        onFocus={this.uponFocus}
+        onBlur={this.uponBlur}
+        value={avatar}
         keyboardType={'numeric'}
         {...rest}
       />
