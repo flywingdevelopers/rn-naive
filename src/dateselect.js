@@ -55,6 +55,7 @@ export default class DateSelect extends React.Component {
     ]
     styles.dateTouch = [
       BaseStyle.DateSelect.dateTouch,
+      theme && theme.Input && theme.Input.style,
       theme && theme.DateSelect && theme.DateSelect.dateTouch,
       styles.dateTouch,
       style,

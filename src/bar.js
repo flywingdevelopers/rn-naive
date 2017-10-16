@@ -15,13 +15,19 @@ import Device from './device'
 import BaseStyle from './basestyle'
 
 export default class Bar extends React.Component {
+  themeElement(element) {
+    return (typeof this.props.theme === 'undefined')?
+      element
+      :
+      React.cloneElement(element, {theme:this.props.theme})
+  }
   themedchildren() {
     // pass theme to all children
     return React.Children.map(this.props.children, child=> {
       return (child.props && child.props.theme)?
-        child : (typeof this.props.theme === 'undefined')?
-          child :
-          React.cloneElement(child, { theme:this.props.theme })
+        child
+        :
+        this.themeElement(child)
     })
   }
   render() {
@@ -101,13 +107,13 @@ export default class Bar extends React.Component {
       centerView,
     ]
     if (center)
-      center = <View style={centerView}>{center}{children}</View>
+      center = <View style={centerView}>{this.themeElement(center)}{children}</View>
     else {
       if (title)
         center = <View style={centerView}><Text theme={theme} style={titleView}>{title}</Text></View>
     }
     if (left || center)
-      left = <View style={leftView}>{left}</View>
+      left = <View style={leftView}>{this.themeElement(left)}</View>
     else {
       if (text)
         left = <View style={leftView}><Text theme={theme} style={textView}>{text}</Text></View>
@@ -117,10 +123,10 @@ export default class Bar extends React.Component {
     if (right || center) {
       rightView = [
         BaseStyle.Bar.rightView,
-        theme && theme.Screen && theme.Bar.rightView,
+        theme && theme.Bar && theme.Bar.rightView,
         rightView,
       ]
-      right = <View style={rightView}>{right}</View>
+      right = <View style={rightView}>{this.themeElement(right)}</View>
     }
     if (children) {
       children = this.themedchildren()

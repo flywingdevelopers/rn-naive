@@ -14,6 +14,12 @@ import BaseStyle from './basestyle'
 import Text from './text'
 
 export default class DataBar extends React.Component {
+  themeElement(element) {
+    return (typeof this.props.theme === 'undefined')?
+      element
+      :
+      React.cloneElement(element, {theme:this.props.theme})
+  }
   render() {
     let {
     // Occupy x lines on screen
@@ -82,7 +88,7 @@ export default class DataBar extends React.Component {
     ]
     labelOrText = (label)?
       <View style={labelView}>
-        {label}
+        {this.themeElement(label)}
       </View>
       :
       <View style={titleView}>
@@ -92,7 +98,7 @@ export default class DataBar extends React.Component {
       <View style={view} {...rest}>
         {labelOrText}
         <View style={inputView}>
-          {input}
+          {this.themeElement(input)}
         </View>
       </View>
     )

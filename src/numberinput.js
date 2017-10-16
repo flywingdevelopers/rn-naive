@@ -22,32 +22,37 @@ export default class NumberInput extends React.Component {
   constructor(props) {
     super(props)
     let {
-      decimal, value, locale
+      decimal, value, locale,
+      zeroBlank, blankZero,
     } = props
-    if (typeof decimal === 'undefined')
-      decimal = BaseStyle.NumberInput.decimal
-    if (typeof value === 'undefined')
-      value = BaseStyle.NumberInput.value
+    this.zeroBlank = zeroBlank || blankZero
+    this.decimal = (typeof decimal === 'undefined')?
+      BaseStyle.NumberInput.decimal
+      :
+      decimal
+    this.value = (typeof value === 'undefined')?
+      BaseStyle.NumberInput.value
+      :
+      value
     this.inf = new Intl.NumberFormat(locale, {
-      maximumFractionDigits: decimal,
-      minimumFractionDigits: decimal
+      maximumFractionDigits: this.decimal,
+      minimumFractionDigits: this.decimal
     })
-    this.state = {
-      decimal: decimal,
-      text: String(value),
-      value: this.textToNumber(value, decimal),
-    }
+    this.state = {value:this.value}
   }
-  textToNumber=(text, decimal)=>{
+  textToNumber=(text)=>{
     try {
-      value = Number(eval(String(text).replace(/,/g,'')).toFixed(decimal))
+      value = Number(eval(String(text).replace(/,/g,'')).toFixed(this.decimal))
     } catch(err) {
       value = 0
     }
     return value
   }
-  numberToText=(number, decimal)=>{
-    return this.inf.format(number, decimal)
+  numberToText=(number)=>{
+    return (number == 0 && this.zeroBlank)?
+      ''
+      :
+      this.inf.format(number, this.decimal)
   }
   getNewText=(txt)=>{
     let text = ''
@@ -57,14 +62,18 @@ export default class NumberInput extends React.Component {
         text = text + txt[i]
       }
     }
+    console.log('getNewText('+txt+')=>'+text)
     this.setState({text})
     return text
   }
-  getFinalValue=()=> {
-    let value = this.textToNumber(this.state.text, this.state.decimal)
+  getFinalValue=(txt)=> {
+    let value = this.textToNumber(txt)
     let text = this.numberToText(value)
     this.setState({text, value})
     return value
+  }
+  displayValue=(value)=>{
+    return this.numberToText(this.textToNumber(value))
   }
   render() {
     let {
@@ -74,17 +83,27 @@ export default class NumberInput extends React.Component {
       theme, style, textStyle,
     // number specification
       locale, decimal, value,
+      zeroBlank, blankZero,
     // action
       disabled,
       ...rest
     } = this.props
+    this.zeroBlank = zeroBlank || blankZero
+    if (!decimal)
+      decimal = this.decimal
+    if (locale) {
+      this.inf = new Intl.NumberFormat(locale, {
+        maximumFractionDigits: decimal,
+        minimumFractionDigits: decimal
+      })
+    }
     textStyle = [
       BaseStyle.NumberInput.text,
       theme && theme.Input && theme.Input.text,
       textStyle,
       style,
     ]
-    return (
+    return(
       <Input
         theme={theme}
         disabled={disabled}
@@ -93,7 +112,7 @@ export default class NumberInput extends React.Component {
         selectTextOnFocus={true}
         getNewText={this.getNewText}
         getFinalValue={this.getFinalValue}
-        value={this.state.text}
+        displayValue={this.displayValue}
         keyboardType={'numeric'}
         {...rest}
       />

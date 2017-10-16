@@ -9,6 +9,10 @@ import { TextInput } from 'react-native'
 export default class Input extends React.Component {
   constructor(props) {
     super(props)
+    this.value = (typeof props.value === 'undefined')?
+      ''
+      :
+      this.value = props.value
     this.state={value:props.value}
   }
   changeText=(txt)=>{
@@ -26,6 +30,14 @@ export default class Input extends React.Component {
     if (this.onEndEditing)
       this.onEndEditing.call(this, value)
   }
+  showValue=(value)=>{
+    if (this.displayValue)
+      value = this.displayValue.call(this, value)
+    console.log('***')
+    console.log(value)
+    console.log('***')
+    return value
+  }
   render() {
     let {
       theme, style,
@@ -37,6 +49,7 @@ export default class Input extends React.Component {
       // Callback from inherited Component
       getNewText,
       getFinalValue,
+      displayValue,
       // standard value
       value,
       // Standard events
@@ -48,19 +61,28 @@ export default class Input extends React.Component {
       theme && theme.Input && theme.Input.style,
       underline && BaseStyle.Input.text,
       underline && BaseStyle.Input.underline,
+      underline && theme.Input && theme.Input.text,
+      underline && theme.Input && theme.Input.underline,
+      disabled && BaseStyle.Input.disabled,
+      disabled && theme.Input && theme.Input.disabled,
       style,
     ]
-    value = value || this.state.value
+    if (typeof value !== 'undefined' && value != this.value)
+      this.value = value
+    else {
+      value = this.state.value
+    }
     this.onChangeText = onChangeText
     this.onEndEditing = onEndEditing || onValueChange || onChange || action
     this.getNewText = getNewText
     this.getFinalValue = getFinalValue
+    this.displayValue = displayValue
     return (
       <TextInput
         underlineColorAndroid='transparent'
         style={style}
         editable={!disabled}
-        value={value}
+        value={this.showValue(value)}
         onChangeText={this.changeText}
         onEndEditing={this.endEditing}
         {...rest}
