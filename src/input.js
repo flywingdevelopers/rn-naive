@@ -13,9 +13,18 @@ export default class Input extends React.Component {
       ''
       :
       props.value
-    this.state={value}
+    this.state={
+      value,
+      editing:false
+    }
   }
-  changeText=(txt)=>{
+  uponFocus=()=>{
+    this.setState({editing:true})
+  }
+  uponBlur=()=>{
+    this.setState({editing:false})
+  }
+  uponChangeText=(txt)=>{
     let value = txt
     if (this.getNewText)
       value = this.getNewText.call(this, txt)
@@ -23,13 +32,14 @@ export default class Input extends React.Component {
       this.onChangeText.call(this, value)
     this.setState({value})
   }
-  endEditing=()=>{
+  uponEndEditing=()=>{
     let value = (this.getFinalValue)?
       this.getFinalValue.call(this, this.state.value)
       :
       this.state.value
     if (this.onEndEditing)
       this.onEndEditing.call(this, value)
+    this.setState({value})
   }
   render() {
     let {
@@ -65,14 +75,18 @@ export default class Input extends React.Component {
     this.getNewText = getNewText
     this.getFinalValue = getFinalValue
     this.displayValue = displayValue
+    if (typeof value === 'undefined' || this.state.editing)
+      value = String(this.state.value)
     return (
       <TextInput
         underlineColorAndroid='transparent'
         style={style}
         editable={!disabled}
         value={value}
-        onChangeText={this.changeText}
-        onEndEditing={this.endEditing}
+        onChangeText={this.uponChangeText}
+        onEndEditing={this.uponEndEditing}
+        onFocus={this.uponFocus}
+        onBlue={this.uponBlur}
         {...rest}
       />
     )

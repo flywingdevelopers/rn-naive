@@ -22,7 +22,7 @@ export default class NumberInput extends React.Component {
   iconv=(text)=>{
     /* convert text to number */
     try {
-      number = Number(eval(String(text).replace(/,/g,'')).toFixed(this.decimal))
+      number = Number(eval(String(text).replace(/,/g,'').replace(/\b0*((\d+\.\d+|\d+))\b/g, "$1")).toFixed(this.decimal))
     } catch(err) {
       number = 0
     }
@@ -58,6 +58,7 @@ export default class NumberInput extends React.Component {
     /* avatar is the value to show on screen */
     this.state = {
       avatar:this.oconv(value),
+      value,
       editing: false,
     }
   }
@@ -77,14 +78,19 @@ export default class NumberInput extends React.Component {
   getFinalValue=(avatar)=> {
     /* call by EndEditing to obtain final value */
     let value = this.iconv(avatar)
-    this.setState({avatar:String(value)})
+    this.setState({avatar:String(value), value})
     console.log('getFinalValue('+avatar+')=>'+value)
     return value
   }
   uponFocus=()=>{
     console.log('uponFocus()')
+    value = (typeof this.props.value === 'undefined')?
+      this.state.value
+      :
+      this.props.value
     this.setState({
-      avatar:this.iconv(this.oconv(this.props.value)),
+      avatar:String(this.iconv(this.oconv(value))),
+      value,
       editing:true,
     })
   }
@@ -92,6 +98,7 @@ export default class NumberInput extends React.Component {
     console.log('uponBlur()')
     this.setState({
       avatar:this.oconv(this.state.avatar),
+      value:this.iconv(this.oconv(this.state.avatar)),
       editing:false,
     })
   }
@@ -124,26 +131,26 @@ export default class NumberInput extends React.Component {
       textStyle,
       style,
     ]
+    if (typeof value === 'undefined')
+      value = this.state.value
     avatar = (this.state.editing)?
       this.state.avatar
       :
       this.oconv(value)
-    return(
-      <Input
-        theme={theme}
-        disabled={disabled}
-        underline={underline}
-        style={textStyle}
-        selectTextOnFocus={true}
-        getNewText={this.getNewText}
-        getFinalValue={this.getFinalValue}
-        onFocus={this.uponFocus}
-        onBlur={this.uponBlur}
-        value={avatar}
-        keyboardType={'numeric'}
-        {...rest}
-      />
-    )
+    return(<Input
+      theme={theme}
+      disabled={disabled}
+      underline={underline}
+      style={textStyle}
+      selectTextOnFocus={true}
+      getNewText={this.getNewText}
+      getFinalValue={this.getFinalValue}
+      onFocus={this.uponFocus}
+      onBlur={this.uponBlur}
+      value={avatar}
+      keyboardType={'numeric'}
+      {...rest}
+    />)
   }
 }
 
