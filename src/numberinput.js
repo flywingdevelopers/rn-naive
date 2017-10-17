@@ -26,7 +26,6 @@ export default class NumberInput extends React.Component {
     } catch(err) {
       number = 0
     }
-    console.log('iconv('+text+')=>'+number)
     return number
   }
   oconv=(number)=>{
@@ -35,7 +34,6 @@ export default class NumberInput extends React.Component {
       ''
       :
       this.inf.format(number, this.decimal)
-    console.log('oconv('+number+')=>'+result)
     return result
   }
   constructor(props) {
@@ -72,18 +70,15 @@ export default class NumberInput extends React.Component {
       }
     }
     this.setState({avatar})
-    console.log('getNewText('+txt+')=>'+avatar)
     return avatar
   }
   getFinalValue=(avatar)=> {
     /* call by EndEditing to obtain final value */
     let value = this.iconv(avatar)
     this.setState({avatar:String(value), value})
-    console.log('getFinalValue('+avatar+')=>'+value)
     return value
   }
   uponFocus=()=>{
-    console.log('uponFocus()')
     value = (typeof this.props.value === 'undefined')?
       this.state.value
       :
@@ -95,7 +90,6 @@ export default class NumberInput extends React.Component {
     })
   }
   uponBlur=()=>{
-    console.log('uponBlur()')
     this.setState({
       avatar:this.oconv(this.state.avatar),
       value:this.iconv(this.oconv(this.state.avatar)),

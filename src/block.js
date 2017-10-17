@@ -30,13 +30,16 @@ export default class Block extends React.Component {
       view, style,
       scrollView,
     // Child element scrollable
-      scrollable,
+      scrollable, scroll,
     // childs
       children,
       ...rest
     } = this.props
-    if (typeof scrollable == 'undefined')
+    if (typeof scrollable == 'undefined' && typeof scroll == 'undefined') {
       scrollable = BaseStyle.Block.scrollable
+    } else {
+      scrollable = scrollable || scroll
+    }
     view = StyleSheet.flatten([
       BaseStyle.Block.view,
       theme && theme.Block && theme.Block.view,

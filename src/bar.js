@@ -51,9 +51,10 @@ export default class Bar extends React.Component {
     // support child elements
       children,
     // Child element scrollable
-      scrollable,
+      scrollable, scroll,
       ...rest
     } = this.props
+    scrollable = scrollable || scroll
     center = center || centerPane
     left = left || leftPane
     right = right || rightPane

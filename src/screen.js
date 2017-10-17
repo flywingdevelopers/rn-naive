@@ -47,11 +47,12 @@ export default class Screen extends React.Component {
       left, leftPane,
       right, rightPane,
     // Child element scrollable
-      scrollable,
+      scrollable, scroll,
     // Screen is for hosting child elements
       children,
       ...rest
     } = this.props
+    scrollable = scrollable || scroll
     center = center || centerPane
     left = left || leftPane
     right = right || rightPane
