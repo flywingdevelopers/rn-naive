@@ -54,7 +54,7 @@ export default class DataBar extends React.Component {
         view,
         { height:
           (Device.height
-          - (( theme && theme.Default && them.Default.ScreenHeightOffset)
+          - (( theme && theme.Default && theme.Default.ScreenHeightOffset)
             || BaseStyle.Default.screenHeightOffset))
           * lines
           / (( theme && theme.Screen && theme.Screen.lines)
