@@ -24,9 +24,13 @@ export default class Input extends React.Component {
     }
   }
   uponFocus=()=>{
+    if (this.onFocus)
+      this.onFocus.call(this)
     this.setState({editing:true})
   }
   uponBlur=()=>{
+    if (this.onBlur)
+      this.onBlur.call(this)
     this.setState({editing:false})
   }
   uponChangeText=(txt)=>{
@@ -52,6 +56,8 @@ export default class Input extends React.Component {
       underline,
       disabled,
       // replaced events
+      onFocus,
+      onBlur,
       onChangeText,
       onEndEditing,
       // Callback from inherited Component
@@ -79,6 +85,8 @@ export default class Input extends React.Component {
       disabled && theme && theme.Input && theme.Input.disabled,
       style,
     ]
+    this.onFocus = onFocus
+    this.onBlur = onBlur
     this.onChangeText = onChangeText
     this.onEndEditing = onEndEditing || onValueChange || onChange
     this.getNewText = getNewText
