@@ -83,6 +83,9 @@ module.exports = {
   get Bar() {
     return require('./bar').default
   },
+  get Modal() {
+    return require('./modal').default
+  },
   get DataBar() {
     return require('./databar').default
   },

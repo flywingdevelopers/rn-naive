@@ -4,7 +4,12 @@
 **/
 
 import React from 'react'
-import { TextInput } from 'react-native'
+import {
+  TextInput,
+  TouchableHighlight,
+  TouchableOpacity,
+  TouchableWithoutFeedback
+ } from 'react-native'
 
 export default class Input extends React.Component {
   constructor(props) {
@@ -55,10 +60,14 @@ export default class Input extends React.Component {
       displayValue,
       // standard value
       value,
+      // action
+      action, onPress, effect,
       // Standard events
-      action, onValueChange, onChange,
+      onValueChange, onChange,
       ...rest
     } = this.props
+    action = action || onPress
+    effect = effect || BaseStyle.Input.effect
     style = [
       BaseStyle.Input.style,
       theme && theme.Input && theme.Input.style,
@@ -71,24 +80,45 @@ export default class Input extends React.Component {
       style,
     ]
     this.onChangeText = onChangeText
-    this.onEndEditing = onEndEditing || onValueChange || onChange || action
+    this.onEndEditing = onEndEditing || onValueChange || onChange
     this.getNewText = getNewText
     this.getFinalValue = getFinalValue
     this.displayValue = displayValue
     if (typeof value === 'undefined' || this.state.editing)
       value = String(this.state.value)
-    return (
-      <TextInput
-        underlineColorAndroid='transparent'
-        style={style}
-        editable={!disabled}
-        value={value}
-        onChangeText={this.uponChangeText}
-        onEndEditing={this.uponEndEditing}
-        onFocus={this.uponFocus}
-        onBlue={this.uponBlur}
-        {...rest}
-      />
-    )
+    element = <TextInput
+      underlineColorAndroid='transparent'
+      style={style}
+      editable={!disabled}
+      value={value}
+      onChangeText={this.uponChangeText}
+      onEndEditing={this.uponEndEditing}
+      onFocus={this.uponFocus}
+      onBlue={this.uponBlur}
+      {...rest}
+    />
+    if (action) {
+      switch (effect) {
+        case 'highlight':
+          element =
+            <TouchableHighlight onLongPress={action}>
+              {element}
+            </TouchableHighlight>
+            break
+        case 'opacity':
+          element =
+            <TouchableOpacity onLongPress={action}>
+              {element}
+            </TouchableOpacity>
+            break
+        case 'none':
+          element =
+            <TouchableOpacity activeOpacity={1} onLongPress={action}>
+              {element}
+            </TouchableOpacity>
+            break
+      }
+    }
+    return element
   }
 }

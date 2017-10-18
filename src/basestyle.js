@@ -67,6 +67,18 @@ export default BaseStyle = {
       // alignItems: 'stretch',
     },
   },
+  Modal: {
+    props: {
+      animationType: 'none',
+      transparent: true,
+    },
+    view: {
+      flex: 1,
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+  },
   DataBar: {
     lines: 1,
     view: {
@@ -366,6 +378,7 @@ export default BaseStyle = {
     },
   },
   Input: {
+    effect: 'opacity',
     style: {
       marginTop: 0,
       marginBottom: 0,
