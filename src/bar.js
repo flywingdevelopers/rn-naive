@@ -113,9 +113,11 @@ export default class Bar extends React.Component {
       if (title)
         center = <View style={centerView}><Text theme={theme} style={titleView}>{title}</Text></View>
     }
-    if (left || center)
-      left = <View style={leftView}>{this.themeElement(left)}</View>
-    else {
+    if (left || center) {
+      if (left)
+        left = this.themeElement(left)
+      left = <View style={leftView}>{left}</View>
+    } else {
       if (text)
         left = <View style={leftView}><Text theme={theme} style={textView}>{text}</Text></View>
       if (children)
@@ -127,7 +129,9 @@ export default class Bar extends React.Component {
         theme && theme.Bar && theme.Bar.rightView,
         rightView,
       ]
-      right = <View style={rightView}>{this.themeElement(right)}</View>
+      if (right)
+        right = this.themeElement(right)
+      right = <View style={rightView}>{right}</View>
     }
     if (children) {
       children = this.themedchildren()
