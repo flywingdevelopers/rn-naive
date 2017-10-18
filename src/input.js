@@ -24,14 +24,14 @@ export default class Input extends React.Component {
     }
   }
   uponFocus=()=>{
+    this.setState({editing:true})
     if (this.onFocus)
       this.onFocus.call(this)
-    this.setState({editing:true})
   }
   uponBlur=()=>{
+    this.setState({editing:false})
     if (this.onBlur)
       this.onBlur.call(this)
-    this.setState({editing:false})
   }
   uponChangeText=(txt)=>{
     let value = txt
@@ -102,7 +102,7 @@ export default class Input extends React.Component {
       onChangeText={this.uponChangeText}
       onEndEditing={this.uponEndEditing}
       onFocus={this.uponFocus}
-      onBlue={this.uponBlur}
+      onBlur={this.uponBlur}
       {...rest}
     />
     if (action) {

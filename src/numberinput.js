@@ -88,6 +88,9 @@ export default class NumberInput extends React.Component {
       value,
       editing:true,
     })
+    if (this.onFocus) {
+      this.onFocus.call(this)
+    }
   }
   uponBlur=()=>{
     this.setState({
@@ -95,6 +98,9 @@ export default class NumberInput extends React.Component {
       value:this.iconv(this.oconv(this.state.avatar)),
       editing:false,
     })
+    if (this.onBlur) {
+      this.onBlur.call(this)
+    }
   }
   render() {
     let {
@@ -108,8 +114,13 @@ export default class NumberInput extends React.Component {
       zeroBlank, blankZero,
     // action
       disabled,
+    // replaced hooks
+      onFocus, onBlur,
+    // reminders
       ...rest
     } = this.props
+    this.onFocus = onFocus
+    this.onBlur = onBlur
     this.zeroBlank = zeroBlank || blankZero
     if (!decimal)
       decimal = this.decimal
