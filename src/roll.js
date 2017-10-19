@@ -48,18 +48,22 @@ export default class Roll extends React.Component {
     } = this.props
     this.items = items || rolls
     // Come in the value
-    this.value = value || this.state.value
+    this.value = (typeof value !== 'undefined')? value : this.state.value
+    if (typeof this.value === 'undefined')
+      this.value = 0
+    console.log('Come in the value ' + this.value + '(' + value + ') [' + this.state.value + ']')
     // Default for input is nothing, otherwise the first item
     this.index = (input)? -1 : 0
     for (var i=0; i<this.items.length; i++) {
       const itm = (typeof this.items[i] === 'object')?
         this.items[i] : {value:this.items[i]}
-      if ((itm.value && (itm.value == this.value)) ||
+      if ((itm.value == this.value) ||
         (itm.text && (itm.text == this.value))) {
         this.index = i
         break
       }
     }
+    console.log('index is ' + this.index)
     // if value is find in the item list
     if (this.index != -1) {
       // align value and index
@@ -69,6 +73,7 @@ export default class Roll extends React.Component {
     }
     ico = ''
     img=''
+    ovy=''
     txt = ' '
     itmrest = {}
     if (this.index < this.items.length) {
@@ -76,18 +81,21 @@ export default class Roll extends React.Component {
         let {
           icon,
           image,
+          overlay,
           text,
           value,
           ...itemrest,
         } = this.items[this.index]
         ico = icon
         img = image
+        ovy = overlay
         txt = text || value
         if (!txt) txt = ' '
         itmrest = itemrest
       } else {
         ico = ''
         img = ''
+        ovy = ''
         txt = this.items[this.index]
       }
     }
@@ -119,6 +127,7 @@ export default class Roll extends React.Component {
       <Button
           icon={ico}
           image={img}
+          overlay={ovy}
           text={txt}
           layout={layout}
           effect={effect}

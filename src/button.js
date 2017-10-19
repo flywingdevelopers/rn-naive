@@ -69,7 +69,7 @@ export default class Button extends React.Component {
       iconView,
     // icon and its style
       icon, iconSize, iconColor, iconSet, iconStyle,
-      image,
+      image, overlay,
     // text and its style
       text, textStyle,
       title, titleStyle,
@@ -122,6 +122,7 @@ export default class Button extends React.Component {
       icon = <Icon
         disabled={disabled}
         name={icon}
+        overlay={overlay}
         size={iconSize}
         color={iconColor}
         style={iconStyle}
@@ -132,6 +133,7 @@ export default class Button extends React.Component {
         icon = <Icon
           disabled={disabled}
           source={image}
+          overlay={overlay}
           size={iconSize}
           color={iconColor}
           style={iconStyle}

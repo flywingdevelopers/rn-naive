@@ -196,7 +196,9 @@ export default class ImageSlider extends React.PureComponent {
         style={[
           BaseStyle.ImageSlider.container,
           this.props.styles && this.props.styles.containerStyle,
+          this.props.styles && this.props.styles.style,
           this.props.containerStyle,
+          this.props.style,
         ]}
         onLayout={(event)=>{this._measureView(event)}}
         {...this._panResponder.panHandlers}

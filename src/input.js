@@ -53,7 +53,7 @@ export default class Input extends React.Component {
   render() {
     let {
       theme, style,
-      underline,
+      underline, multiline,
       disabled,
       // replaced events
       onFocus,
@@ -77,9 +77,8 @@ export default class Input extends React.Component {
     style = [
       BaseStyle.Input.style,
       theme && theme.Input && theme.Input.style,
-      underline && BaseStyle.Input.text,
+      (multiline? BaseStyle.Input.mulitlineText : BaseStyle.Input.text),
       underline && BaseStyle.Input.underline,
-      underline && theme && theme.Input && theme.Input.text,
       underline && theme && theme.Input && theme.Input.underline,
       disabled && BaseStyle.Input.disabled,
       disabled && theme && theme.Input && theme.Input.disabled,
@@ -96,6 +95,7 @@ export default class Input extends React.Component {
       value = String(this.state.value)
     element = <TextInput
       underlineColorAndroid='transparent'
+      multiline={multiline}
       style={style}
       editable={!disabled}
       value={value}

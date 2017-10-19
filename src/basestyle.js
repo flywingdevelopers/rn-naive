@@ -61,6 +61,7 @@ export default BaseStyle = {
     },
   },
   Block: {
+    line: 2,
     scrollable: false,
     view:{
       flexDirection: 'column',
@@ -387,6 +388,7 @@ export default BaseStyle = {
       height:'100%',
     },
     text: { textAlignVertical:'bottom'},
+    mulitilineText: { textAlignVertical:'top'},
     underline: {
       margin: 2,
       marginTop: 2,

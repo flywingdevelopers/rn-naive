@@ -52,8 +52,8 @@ export default class DataBlock extends React.Component {
       style,
       view,
     ])
-    if (!view.hasOwnProperty('flex')) {
-      lines = lines || BaseStyle.Bar.line
+    if (!view.hasOwnProperty('flex') || typeof lines !== 'undefined') {
+      lines = lines || BaseStyle.Block.line
       view = [
         view,
         { height:
