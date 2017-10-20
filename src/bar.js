@@ -73,7 +73,7 @@ export default class Bar extends React.Component {
       style,
       view,
     ])
-    if (!view.hasOwnProperty('flex')) {
+    if (!view.hasOwnProperty('flex') || typeof lines !== 'undefined') {
       lines = lines || BaseStyle.Bar.line
       view = [
         view,
