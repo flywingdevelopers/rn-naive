@@ -119,7 +119,7 @@ export default BaseStyle = {
     view: {
       flex:1,
       flexDirection: 'column',
-      alignSelf: 'stretch',
+      // alignSelf: 'stretch',
       margin: 2,
     },
     title: {},
