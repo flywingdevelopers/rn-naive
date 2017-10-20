@@ -386,7 +386,8 @@ export default BaseStyle = {
       paddingBottom: 0,
       height:'100%',
     },
-    text: { textAlignVertical:'bottom'},
+    singleline: { textAlignVertical: 'bottom' },
+    multiline: { textAlignVertical: 'top' },
     underline: {
       margin: 2,
       marginTop: 2,
