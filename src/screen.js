@@ -14,12 +14,19 @@ import BaseStyle from './basestyle'
 import Bar from './bar'
 
 export default class Screen extends React.Component {
+  themeElement(element) {
+    return (typeof this.props.theme === 'undefined')?
+      element
+      :
+      React.cloneElement(element, {theme:this.props.theme})
+  }
   themedchildren() {
     // pass theme to all children
     return React.Children.map(this.props.children, child=> {
-      return (child.props.theme)? child : (typeof this.props.theme === 'undefined')?
-          child :
-          React.cloneElement(child, { theme:this.props.theme })
+      return (child.props && child.props.theme)?
+        child
+        :
+        this.themeElement(child)
     })
   }
   render() {

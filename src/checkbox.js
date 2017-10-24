@@ -91,7 +91,7 @@ export default class CheckBox extends React.Component {
     }
     style = [
       BaseStyle.CheckBox.view,
-      theme && theme.CheckBox.view,
+      theme && theme.CheckBox && theme.CheckBox.view,
       style, view,
     ]
     iconView = [
