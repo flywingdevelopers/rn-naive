@@ -110,6 +110,15 @@ export default class Button extends React.Component {
       || BaseStyle.Button.layout
     if (text && !(icon || image)) layout = 'textOnly'
     if ((icon || image) && !text) layout = 'iconOnly'
+    if (textOnly && typeof text === 'undefined')
+      text = textOnly
+    if (iconOnly && typeof icon === 'undefined' && typeof image === 'undefined') {
+      if (typeof iconOnly === 'string') {
+        icon = iconOnly
+      } else {
+        image = iconOnly
+      }
+    }
     if (icon || image) {
       iconSize = iconSize
         || (theme && theme.Button && theme.Button.iconSize)

@@ -77,7 +77,10 @@ export default class Input extends React.Component {
     style = [
       BaseStyle.Input.style,
       theme && theme.Input && theme.Input.style,
-      (multiline? BaseStyle.Input.mulitlineText : BaseStyle.Input.text),
+      (multiline)?
+        (theme && theme.Input && theme.Input.multiline) || BaseStyle.Input.multiline
+        :
+        (theme && theme.Input && theme.Input.singleline) || BaseStyle.Input.singleline,
       underline && BaseStyle.Input.underline,
       underline && theme && theme.Input && theme.Input.underline,
       disabled && BaseStyle.Input.disabled,
@@ -97,6 +100,7 @@ export default class Input extends React.Component {
       underlineColorAndroid='transparent'
       multiline={multiline}
       style={style}
+      multiline={multiline}
       editable={!disabled}
       value={value}
       onChangeText={this.uponChangeText}

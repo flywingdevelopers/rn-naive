@@ -120,7 +120,7 @@ export default BaseStyle = {
     view: {
       flex:1,
       flexDirection: 'column',
-      alignSelf: 'stretch',
+      // alignSelf: 'stretch',
       margin: 2,
     },
     title: {},
@@ -387,8 +387,8 @@ export default BaseStyle = {
       paddingBottom: 0,
       height:'100%',
     },
-    text: { textAlignVertical:'bottom'},
-    mulitilineText: { textAlignVertical:'top'},
+    singleline: { textAlignVertical: 'bottom' },
+    multiline: { textAlignVertical: 'top' },
     underline: {
       margin: 2,
       marginTop: 2,
