@@ -1,10 +1,6 @@
 {
   "name": "rn-naive",
-<<<<<<< HEAD
-  "version": "0.5.15",
-=======
   "version": "0.5.17",
->>>>>>> 56e31a03f96fed2a8b87aeeb2f381f69d13324ba
   "description": "naive components for React-Native",
   "main": "src/index.js",
   "scripts": {
