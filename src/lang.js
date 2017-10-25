@@ -40,8 +40,10 @@ export default class Lang {
           this.lg[lang.code] = lang
         obj.data.map((d)=>{
           let field = lang.field || lang.code
+          let code = (typeof obj.header.code === 'undefined')?
+            'code' : obj.header.code
           if (typeof d[field] === 'string') {
-            let dl = `${obj.header.domain}-${d.code}`
+            let dl = `${obj.header.domain}-${d[code]}`
             if (typeof this.db[dl] === 'undefined') this.db[dl] = {}
             this.db[dl][lang.code] = d[field]
           }
