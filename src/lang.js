@@ -10,8 +10,12 @@
 *     this.lang.loadURI(uri, uponComplete) where uri is external resource
 *     this.lang.loadGoogleDrive(fid, uponComplete) where fid is the shareable link ID of the Google Drive file
 *
+*   // Set current language
+*     this.lang.setLang(code)
+*   // Get current language name
+*     this.lang.getLang([code], ['name'|'field'])
 *   // Perform translation,
-*     this.lang.text(code, [lang], [domain])
+*     this.lang.text(code, [domain], [lang])
 **/
 
 import React from 'react'
@@ -40,8 +44,10 @@ export default class Lang {
           this.lg[lang.code] = lang
         obj.data.map((d)=>{
           let field = lang.field || lang.code
+          let code = (typeof obj.header.code === 'undefined')?
+            'code' : obj.header.code
           if (typeof d[field] === 'string') {
-            let dl = `${obj.header.domain}-${d.code}`
+            let dl = `${obj.header.domain}-${d[code]}`
             if (typeof this.db[dl] === 'undefined') this.db[dl] = {}
             this.db[dl][lang.code] = d[field]
           }
@@ -84,28 +90,34 @@ export default class Lang {
   }
 
   // Return a translated Text
-  text=(code, lang, domain)=>{
-    var result = null
-    if (typeof doumain === 'undefined') {
-      if (typeof lang === 'undefined') {
-        result = this.findText1(code)
+  text=(code, domain, lang)=>{
+    var result = `[${code}-${domain}-${lang}]`
+    if (domain) {
+      if (lang) {
+        result = this.findTextCDL(code, domain, lang)
         if (result === null)
-          result = `[${code}-${this.lang}]`
+          result = `[${code}-${domain}-${lang}]`
       } else {
-        result = this.findText2(code, lang)
+        result = this.findTextCD(code, domain)
         if (result === null)
-          result = `[${code}-${lang}]`
+          result = `[${code}-${domain}]`
       }
     } else {
-      result = this.findText3(code, lang, domain)
-      if (result === null)
-        result = `[${code}-${lang}-${domain}]`
+      if (lang) {
+        result = this.findTextCL(code, lang)
+        if (result === null)
+          result = `[${code}-${lang}]`
+      } else {
+        result = this.findTextC(code)
+        if (result == null)
+          result = `[${code}]`
+      }
     }
     return result
   }
 
   // Support functions for text()
-  findText3=(code, lang, domain)=>{
+  findTextCDL=(code, domain, lang)=>{
     let dl = `${domain}-${code}`
     return(
       ((typeof this.db[dl] === 'object') &&
@@ -113,18 +125,22 @@ export default class Lang {
         this.db[dl][lang] : null
     )
   }
-  findText2=(code, lang)=>{
+  findTextCL=(code, lang)=>{
     for (var i=0; i<this.dm.length; i++) {
-      text = this.findText3(code, lang, this.dm[i])
+      text = this.findTextCDL(code, this.dm[i], lang)
       if (text !== null)
         return text
     }
     return null
   }
-  findText1=(code)=>{
+  findTextCD=(code, domain)=>{
+    return this.findTextCDL(code, domain, this.lang)
+  }
+  findTextC=(code)=>{
     for (var i=0; i<this.dm.length; i++) {
-      text = this.findText3(code, this.lang, this.dm[i])
-      if (typeof text !== 'undefined') return text
+      text = this.findTextCDL(code, this.dm[i], this.lang)
+      if (text !== null)
+        return text
     }
     return null
   }
