@@ -14,6 +14,12 @@
 *     this.lang.setLang(code)
 *   // Get current language name
 *     this.lang.getLang([code], ['name'|'field'])
+*   // Get all languages (in one keyed object)
+*       let lg = this.lang.getLangs()
+*       result = []
+*       for (var key in lg) {
+*         result.push({code:lg.code, text:lg.name, remark:lg.field})
+*       }       
 *   // Perform translation,
 *     this.lang.text(code, [domain], [lang])
 **/
@@ -27,7 +33,7 @@ export default class Lang {
   // Array of known domains
   dm = []
   // Array of language definitions
-  lg= []
+  lg = []
   // Default language code
   lang = 'en'
 
@@ -88,6 +94,9 @@ export default class Lang {
     if (!fld) fld = 'name'
     return this.lg[lang][fld]
   }
+
+  // Get all languages definition
+  getLangs=()=>{ return this.lg }
 
   // Return a translated Text
   text=(code, domain, lang)=>{
