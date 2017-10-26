@@ -54,6 +54,8 @@ export default class Bar extends React.Component {
       scrollable, scroll,
       ...rest
     } = this.props
+    if (children)
+      children = this.themedchildren()
     scrollable = scrollable || scroll
     center = center || centerPane
     left = left || leftPane
@@ -134,7 +136,6 @@ export default class Bar extends React.Component {
       right = <View style={rightView}>{right}</View>
     }
     if (children) {
-      children = this.themedchildren()
       if (scrollable) {
         scrollView = [
           BaseStyle.Bar.scrollView,

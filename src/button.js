@@ -161,7 +161,7 @@ export default class Button extends React.Component {
     }
     textStyle = [
       BaseStyle.Button.text,
-      theme && theme.Button && Button.Button.text,
+      theme && theme.Button && theme.Button.text,
       textStyle,
       (disabled) &&
         {color: (theme && theme.Input &&
