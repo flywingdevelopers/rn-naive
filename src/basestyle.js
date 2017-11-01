@@ -398,8 +398,8 @@ export default BaseStyle = {
       borderRadius: 0,
       borderColor: '#696969',
     },
-    disabled: {
-      color:'silver',
+    readonly: {
+      color:'black',
     },
   },
   NumberInput: {

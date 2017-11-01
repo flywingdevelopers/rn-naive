@@ -4,11 +4,39 @@
 * Kevin Lee 16 Aug 2017
 **/
 import { Dimensions, PixelRatio } from 'react-native'
+import DeviceInfo from 'react-native-device-info'
 
 export default Device = {
   width: Dimensions.get('window').width,
   height: Dimensions.get('window').height,
   pixelRatio: PixelRatio.get(),
+  uniqueID: DeviceInfo.getUniqueID(),
+  manufacturer: DeviceInfo.getManufacturer(),
+  brand: DeviceInfo.getBrand(),
+  model: DeviceInfo.getModel(),
+  deviceID: DeviceInfo.getDeviceId(),
+  systemName: DeviceInfo.getSystemName(),
+  systemVersion: DeviceInfo.getSystemVersion(),
+  bundleID: DeviceInfo.getBundleId(),
+  buildNumber: DeviceInfo.getBuildNumber(),
+  version: DeviceInfo.getVersion(),
+  readableVersion: DeviceInfo.getReadableVersion(),
+  deviceName: DeviceInfo.getDeviceName(),
+  userAgent: DeviceInfo.getUserAgent(),
+  deviceLocale: DeviceInfo.getDeviceLocale(),
+  deviceCountry: DeviceInfo.getDeviceCountry(),
+  timezone: DeviceInfo.getTimezone(),
+  isEmulator: DeviceInfo.isEmulator(),
+  isTablet: DeviceInfo.isTablet(),
+  isPinOrFingerprintSet: DeviceInfo.isPinOrFingerprintSet(),
+  apiLevel: DeviceInfo.getAPILevel(),
+  instanceID: DeviceInfo.getInstanceID(),
+  phoneNumber: DeviceInfo.getPhoneNumber(),
+  firstInstallTime: DeviceInfo.getFirstInstallTime(),
+  lastUpdateTime: DeviceInfo.getLastUpdateTime(),
+  serialNumber: DeviceInfo.getSerialNumber(),
+  ipAddress: DeviceInfo.getIPAddress(),
+  macAddress: DeviceInfo.getMACAddress(),
   normalizedFontSize(size) {
     let pixelRatio = PixelRatio.get()
     let width = Dimensions.get('window').width

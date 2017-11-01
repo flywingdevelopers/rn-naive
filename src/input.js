@@ -54,7 +54,7 @@ export default class Input extends React.Component {
     let {
       theme, style,
       underline, multiline,
-      disabled,
+      disabled, readonly,
       // replaced events
       onFocus,
       onBlur,
@@ -85,6 +85,8 @@ export default class Input extends React.Component {
       underline && theme && theme.Input && theme.Input.underline,
       disabled && BaseStyle.Input.disabled,
       disabled && theme && theme.Input && theme.Input.disabled,
+      readonly && BaseStyle.Input.readonly,
+      readonly && theme && theme.Input && theme.Input.readonly,
       style,
     ]
     this.onFocus = onFocus
@@ -101,7 +103,7 @@ export default class Input extends React.Component {
       multiline={multiline}
       style={style}
       multiline={multiline}
-      editable={!disabled}
+      editable={!disabled && !readonly}
       value={value}
       onChangeText={this.uponChangeText}
       onEndEditing={this.uponEndEditing}
