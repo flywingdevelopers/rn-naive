@@ -134,7 +134,9 @@ export default class Icon extends React.Component {
     }
     effect= effect || (theme && theme.Icon && theme.Icon.effect) || BaseStyle.Icon.effect
     if (disabled) {
-      color = (theme && theme.Input && theme.Input.disabled.color) || BaseStyle.Input.disabled.color
+      color = (theme && theme.Input && theme.Input.disabled.color) ||
+              ( BaseStyle.Input && BaseStyle.Input.disabled &&
+                BaseStyle.Input.disabled.color )
       effect = 'none'
     }
     view = [
