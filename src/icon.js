@@ -124,6 +124,11 @@ export default class Icon extends React.Component {
       style,
       iconStyle,
     ]
+    if (disabled) {
+      this.color = (theme && theme.Text && theme.Text.disabled.color)
+              || BaseStyle.Text.disabled.color
+      effect = 'none'
+    }
     let element = this.iconElement(source, name, false)
     let overlayElement = this.iconElement(overlaySource, overlay, true, overlayStyle)
     if (overlayElement) {
@@ -133,12 +138,6 @@ export default class Icon extends React.Component {
       </View>
     }
     effect= effect || (theme && theme.Icon && theme.Icon.effect) || BaseStyle.Icon.effect
-    if (disabled) {
-      color = (theme && theme.Input && theme.Input.disabled.color) ||
-              ( BaseStyle.Input && BaseStyle.Input.disabled &&
-                BaseStyle.Input.disabled.color )
-      effect = 'none'
-    }
     view = [
       BaseStyle.Icon.view,
       theme && theme.Icon && theme.Icon.view,

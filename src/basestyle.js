@@ -157,6 +157,7 @@ export default BaseStyle = {
     D5: {size: 10, weight: 'normal'},
     D6: {size:  8, weight: 'normal'},
     default: { color:'darkblue' },
+    disabled: { color:'silver' },
   },
   Icon: {
     iconSet: 'ion',
