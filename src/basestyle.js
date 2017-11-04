@@ -23,7 +23,7 @@ export default BaseStyle = {
     titleView: {
       color: '#ddd',
       fontWeight: 'bold',
-      fontSize: Device.normalizedFontSize(16),
+      fontSize: Device.fontSize(16),
     },
     lines: 24,
   },
@@ -199,11 +199,11 @@ export default BaseStyle = {
   Button: {
     effect: "opacity",
     layout: "iconLeft",
-    iconSize: Device.normalizedFontSize(18),
+    iconSize: Device.fontSize(18),
     defaultIcon: 'ios-square-outline',
     text: {
       fontWeight: 'bold',
-      fontSize: Device.normalizedFontSize(9),
+      fontSize: Device.fontSize(9),
     },
     view: {
       backgroundColor: 'lightgray',
@@ -300,9 +300,9 @@ export default BaseStyle = {
     boxType: 'box',
     layout: 'iconLeft',
     effect: 'none',
-    iconSize: Device.normalizedFontSize(20),
+    iconSize: Device.fontSize(20),
     textStyle: {
-      fontSize: Device.normalizedFontSize(12),
+      fontSize: Device.fontSize(12),
     },
     view: {
       flex:1,
@@ -335,9 +335,9 @@ export default BaseStyle = {
     boxType: 'radio',
     layout: 'iconLeft',
     effect: 'none',
-    iconSize: Device.normalizedFontSize(20),
+    iconSize: Device.fontSize(20),
     textStyle: {
-      fontSize: Device.normalizedFontSize(12),
+      fontSize: Device.fontSize(12),
     },
     iconViewLeft: {
       alignItems:'flex-end',

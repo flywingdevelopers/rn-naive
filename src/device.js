@@ -37,7 +37,7 @@ export default Device = {
   serialNumber: DeviceInfo.getSerialNumber(),
   ipAddress: DeviceInfo.getIPAddress(),
   macAddress: DeviceInfo.getMACAddress(),
-  normalizedFontSize(size) {
+  fontSize(size) {
     let pixelRatio = PixelRatio.get()
     let width = Dimensions.get('window').width
     let height = Dimensions.get('window').height
