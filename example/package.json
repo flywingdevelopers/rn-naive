@@ -1,0 +1,32 @@
+{
+	"name": "example",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"start": "node node_modules/react-native/local-cli/cli.js start",
+		"test": "jest"
+	},
+	"dependencies": {
+		"intl": "^1.2.5",
+		"react": "16.0.0",
+		"react-native": "0.50.1",
+		"react-native-camera": "^0.10.0",
+		"react-native-datepicker": "^1.6.0",
+		"react-native-device-info": "^0.12.1",
+		"react-native-mail": "git+https://github.com/flywingdevelopers/react-native-mail.git",
+		"react-native-restart": "0.0.4",
+		"react-native-side-menu": "^1.1.3",
+		"react-native-vector-icons": "^4.4.2",
+		"react-navigation": "^1.0.0-beta.19",
+		"rn-naive": "^0.5.27"
+	},
+	"devDependencies": {
+		"babel-jest": "21.2.0",
+		"babel-preset-react-native": "4.0.0",
+		"jest": "21.2.1",
+		"react-test-renderer": "16.0.0"
+	},
+	"jest": {
+		"preset": "react-native"
+	}
+}
