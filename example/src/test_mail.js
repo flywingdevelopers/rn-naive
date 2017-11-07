@@ -19,7 +19,7 @@ import {
   ImageSlider, ButtonList,
   Roll, Icon,
   Button
-} from '../rn-naive'
+} from 'rn-naive'
 
 class MainScreen extends React.Component {
   constructor(props) {

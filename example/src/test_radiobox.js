@@ -4,7 +4,7 @@
 **/
 
 import React from 'react'
-import { Screen, Bar, CheckBox, Text, RadioBox } from '../rn-naive'
+import { Screen, Bar, CheckBox, Text, RadioBox } from 'rn-naive'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -54,7 +54,7 @@ export default class App extends React.Component {
           items={[
             'Albert', 'Baron', 'Calvin', 'David', 'Eric',
             'Frank', 'Gary', 'Harris', 'Iron','Joseph',
-            'Kent', 'Lawrence', 
+            'Kent', 'Lawrence',
           ]}
           disabled={this.state.DisableAll}
           value={this.state.BOY}

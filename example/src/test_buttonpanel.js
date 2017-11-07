@@ -5,7 +5,7 @@
 
 import React from 'react'
 import { Alert } from 'react-native'
-import { Device, Screen, Block, Bar, CheckBox, Text, ButtonPanel } from '../rn-naive'
+import { Device, Screen, Block, Bar, CheckBox, Text, ButtonPanel } from 'rn-naive'
 
 export default class App extends React.Component {
   constructor(props) {

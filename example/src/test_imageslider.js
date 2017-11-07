@@ -4,7 +4,7 @@
 **/
 
 import React, { Component } from 'react'
-import { Device, Screen, Block, Bar, ButtonList, ImageSlider } from '../rn-naive'
+import { Device, Screen, Block, Bar, ButtonList, ImageSlider } from 'rn-naive'
 
 const allImages=[
     'https://cdn.pixabay.com/photo/2015/03/30/03/04/women-697927_960_720.jpg',

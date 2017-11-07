@@ -4,7 +4,7 @@
  **/
 
 import React from 'react'
-import { Screen, Block, Text, Button, Modal } from '../rn-naive'
+import { Screen, Block, Text, Button, Modal } from 'rn-naive'
 
 export default class App extends React.Component {
   constructor() {

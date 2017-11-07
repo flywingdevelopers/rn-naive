@@ -9,7 +9,7 @@ import {
   DataBar, DataBlock,
   Text, CheckBox, Input,
   DateSelect,
-} from '../rn-naive'
+} from 'rn-naive'
 
 export default class App extends React.Component {
   constructor(props) {

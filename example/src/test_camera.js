@@ -7,7 +7,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { StackNavigator } from 'react-navigation'
 import Camera from 'react-native-camera'
-import { Screen, Block, Text, Roll, Icon, ImageSlider, ButtonList } from '../rn-naive';
+import { Screen, Block, Text, Roll, Icon, ImageSlider, ButtonList } from 'rn-naive';
 
 class ImageScreen extends React.Component {
   constructor(props) {

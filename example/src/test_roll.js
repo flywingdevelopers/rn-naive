@@ -8,7 +8,7 @@ import {
   BaseStyle, Screen, Bar, Block,
   DataBar, DataBlock,
   Text, Input, Roll
-} from '../rn-naive'
+} from 'rn-naive'
 
 export default class App extends React.Component {
   constructor(props) {

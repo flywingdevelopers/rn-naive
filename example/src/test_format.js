@@ -4,7 +4,7 @@
 **/
 
 import React from 'react'
-import { Screen, Text } from '../rn-naive'
+import { Screen, Text } from 'rn-naive'
 
 export default class App extends React.Component{
   render() {

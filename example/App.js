@@ -1,10 +1,10 @@
 //// Device
-// import App from './src/test_device'
+//import App from './src/test_device'
 // import App from './src/test_pixelratio'
 
 //// BaseStyle & Layout
 // import App from './src/test_text'
-import App from './src/test_content'
+// import App from './src/test_content'
 // import App from './src/test_modal'
 
 //// Icon
@@ -40,7 +40,7 @@ import App from './src/test_content'
 
 //// Experimental
 // import App from './src/test_view'
-// import App from './src/test_format'
+import App from './src/test_format'
 
 //// Lab Tests
 // import App from './lab/test01'        /* Bare Basic */

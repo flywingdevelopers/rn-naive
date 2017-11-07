@@ -4,7 +4,7 @@
 **/
 
 import React, { Component } from 'react'
-import { Lang, Screen, Bar, Block, RadioBox, Text } from '../rn-naive'
+import { Lang, Screen, Bar, Block, RadioBox, Text } from 'rn-naive'
 
 export default class App extends React.Component {
   constructor(props) {

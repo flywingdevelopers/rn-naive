@@ -4,7 +4,7 @@
 **/
 
 import React, { Component } from 'react'
-import { Device, Screen, Bar, Content, Text, IconList, Icon } from '../rn-naive'
+import { Device, Screen, Bar, Content, Text, IconList, Icon } from 'rn-naive'
 
 export default class App extends React.Component {
   constructor(props) {

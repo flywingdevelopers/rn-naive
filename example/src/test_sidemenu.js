@@ -4,7 +4,7 @@
 **/
 
 import React, { Component } from 'react'
-import { SideMenu } from '../rn-naive'
+import { SideMenu } from 'rn-naive'
 import TestMom from './test_mom'
 import TestButton from './test_button'
 

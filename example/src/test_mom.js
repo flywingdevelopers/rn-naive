@@ -15,7 +15,7 @@ import {
   Roll, RadioBox, CheckBox,
   Camera,
   MOM, Lang,
-} from '../rn-naive'
+} from 'rn-naive'
 
 class MainScreen extends React.Component {
   constructor(props) {

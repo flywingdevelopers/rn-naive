@@ -5,7 +5,7 @@
 
 import React from 'react'
 import { TextInput } from 'react-native'
-import { Screen, Bar, Block, DataBar, DataBlock, Text, CheckBox, Input } from '../rn-naive'
+import { Screen, Bar, Block, DataBar, DataBlock, Text, CheckBox, Input } from 'rn-naive'
 
 export default class App extends React.Component {
   constructor(props) {
