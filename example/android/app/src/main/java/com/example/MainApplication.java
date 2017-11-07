@@ -6,7 +6,6 @@ import com.facebook.react.ReactApplication;
 import com.avishayil.rnrestart.ReactNativeRestartPackage;
 import com.chirag.RNMail.RNMail;
 import com.lwansbrough.RCTCamera.RCTCameraPackage;
-import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -29,7 +28,6 @@ public class MainApplication extends Application implements ReactApplication {
           new MainReactPackage(),
             new ReactNativeRestartPackage(),
             new RNMail(),
-            new RNDeviceInfo(),
             new RCTCameraPackage()
       );
     }

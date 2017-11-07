@@ -150,7 +150,6 @@ dependencies {
     compile project(':react-native-mail')
     compile project(':react-native-camera')
     compile project(':react-native-restart')
-    compile project(':react-native-device-info')
 }
 
 // Run this once to be able to run the application with BUCK
